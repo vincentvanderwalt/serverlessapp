@@ -1,23 +1,24 @@
 import createReducer from './createReducer';
-import { Action, ActionType, Todo } from '../model/model';
+import { ActionPayload, ActionType, Todo } from '../model/model';
+import { TodoAction } from '../actions/todo';
 
 export const todoList = createReducer([], {
-    [ActionType.GET_TODOS](state: Array<Todo>, action: Action<Array<Todo>>) {
-        state = action.payload;
-        return state;        
+    [ActionType.TODO_FETCH_COMPLETE](state: Array<Todo>, action: TodoAction) {
+        state = action.todos;
+        return state;
     },
-    [ActionType.ADD_TODO](state: Array<Todo>, action: Action<Todo>) {
+    [ActionType.ADD_TODO](state: Array<Todo>, action: ActionPayload<Todo>) {
         return [...state, action.payload];
     },
-    [ActionType.COMPLETE_TODO](state: Array<Todo>, action: Action<number>) {
+    [ActionType.COMPLETE_TODO](state: Array<Todo>, action: ActionPayload<number>) {
         // search after todo item with the given id and set completed to true
         return state.map(t => t.id === action.payload ? { ...t, completed: true } : t);
     },
-    [ActionType.UNCOMPLETE_TODO](state: Array<Todo>, action: Action<number>) {
+    [ActionType.UNCOMPLETE_TODO](state: Array<Todo>, action: ActionPayload<number>) {
         // search after todo item with the given id and set completed to false
         return state.map(t => t.id === action.payload ? { ...t, completed: false } : t);
     },
-    [ActionType.DELETE_TODO](state: Array<Todo>, action: Action<number>) {
+    [ActionType.DELETE_TODO](state: Array<Todo>, action: ActionPayload<number>) {
         // remove all todos with the given id
         return state.filter(t => t.id !== action.payload);
     },

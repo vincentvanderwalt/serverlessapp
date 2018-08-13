@@ -10,10 +10,11 @@ export enum ActionType {
     DELETE_TODO,
     COMPLETE_TODO,
     UNCOMPLETE_TODO,
-    GET_TODOS
+    GET_TODOS,
+    TODO_FETCH_COMPLETE
 }
 
-export interface Action<T> {
+export interface ActionPayload<T> {
     type: ActionType;
     payload: T;
 }

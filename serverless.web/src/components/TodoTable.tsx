@@ -18,6 +18,7 @@ import * as TodoActions from '../actions/todo';
 import { Todo } from '../model/model';
 
 export namespace TodoTable {
+
   export interface Props extends WithStyles<typeof styles> {
     todoList: Todo[];
     actions: typeof TodoActions;
@@ -31,7 +32,7 @@ class TodoTable extends React.Component<TodoTable.Props> {
 
   componentDidMount() {
     console.log('component mounted');
-    this.props.actions.getTodos();
+    this.props.actions.todoFetch();
   }
 
   onRowClick(todo: Todo) {

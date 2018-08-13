@@ -10,6 +10,7 @@ import { Todo } from '../model/model';
 import { RootState } from '../reducers/index';
 
 export namespace TodoPage {
+  
   export interface Props extends RouteComponentProps<void>, WithStyles<typeof styles> {
     todoList: Todo[];
     actions: typeof TodoActions;
