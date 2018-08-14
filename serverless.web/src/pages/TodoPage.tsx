@@ -13,6 +13,7 @@ export namespace TodoPage {
   export interface Props extends RouteComponentProps<void>, WithStyles<typeof styles> {
     todoList: Todo[];
     actions: typeof TodoActions;
+    fetchTodos(): void; 
   }
 
   export interface State {
@@ -51,7 +52,7 @@ class TodoPage extends React.Component<TodoPage.Props, TodoPage.State> {
         </Button>
         </Grid>
         <Grid item xs={12}>
-          <TodoTable todoList={todoList} actions={actions} />
+          <TodoTable todoList={todoList} actions={actions} fetchTodos />
         </Grid>
       </Grid>
     );

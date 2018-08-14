@@ -16,22 +16,38 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import * as React from 'react';
 import * as TodoActions from '../actions/todo';
 import { Todo } from '../model/model';
+import { TodoState } from '../reducers/todo';
 
 export namespace TodoTable {
+
+  interface StateProps {
+    todoState: TodoState
+  }
+
+  interface DispatchProps {
+todoFetch:typeof todoFetch;
+  }
+
+  export interface Props extends StateProps, DispatchProps {
+
+  }
+
+
   export interface Props extends WithStyles<typeof styles> {
     todoList: Todo[];
     actions: typeof TodoActions;
+    fetchTodos(): void;
   }
 }
 
 class TodoTable extends React.Component<TodoTable.Props> {
   constructor(props?: TodoTable.Props, context?: any) {
     super(props as any, context);
+    this.state = { todoItems: [] };
   }
 
   componentDidMount() {
-    console.log('component mounted');
-    this.props.actions.getTodos();
+    this.props.fetchTodos();
   }
 
   onRowClick(todo: Todo) {

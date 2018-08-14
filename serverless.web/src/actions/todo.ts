@@ -1,25 +1,93 @@
-import { Action, ActionType, Todo } from '../model/model';
+import { ActionType, Todo } from '../model/model';
+import { Action, Dispatch } from 'redux';
 
-export function getTodos(): Action<Todo[]> {
+export type ToDoList = Todo[];
+
+export interface TodoAction extends Action {
+  todos: ToDoList;
+}
+
+export const todoFetch = () => (dispatch: Dispatch<TodoAction>) => {
+
+  // API request will be executed...
+  // dispatch(postsFetchBegin());
+
   fetch('http://localhost:7071/api/GetTodos', {
     method: 'get'
   })
-    .then(response => response.json())
-    .then(json => console.log(json))
+    .then(response => Promise.all([response.json()]))
+    .then(json => {
+      dispatch(fetchTodosCompleted(json[0]));
+    })
     .catch(error => {
       console.log(`Api Error fetching documents : ${error}`);
     });
 
-  // console.log(testDocs);
+  // ...now
+  // return axios.get(postsApiUrl)
+  //     .then((response: { data: PostsList }) => {
 
-  let todoItem: Todo = { id: 1, text: 'hello', completed: false };
-  let test: Todo[] = [];
-  test.push(todoItem);
+  //         // Get only 10 first posts, due to task requirements
+  //         // Array should be sliced ASAP, because we don't need large amount of data in an action
+  //         const first10Posts = response.data.slice(0, 10);
+
+  //         dispatch(postsFetchSuccess(first10Posts));
+  //     })
+  //     .catch(() => {
+
+  //         // Something is no yes 👎 (thanks Tusk for english lessons)
+  //         dispatch(postsFetchError());
+  //     });
+};
+
+
+export const fetchTodos = () => (dispatch:any) => {
+  fetch('http://localhost:7071/api/GetTodos', {
+    method: 'get'
+  })
+    .then(response => Promise.all([response.json()]))
+    .then(json => {
+      dispatch(fetchTodosCompleted(json[0]));
+    })
+    .catch(error => {
+      console.log(`Api Error fetching documents : ${error}`);
+    });
+}
+
+
+
+export function getTodos(): Action<Array<Todo>> {
+  var todoItems = Array<Todo>();
+  // fetch('http://localhost:7071/api/GetTodos', {
+  //   method: 'get'
+  // })
+  //   .then(response => Promise.all([response.json()]))
+  //   .then(json => {
+  //     dispatch(fetchMembersCompleted(members));
+  //   })
+  //   .catch(error => {
+  //     console.log(`Api Error fetching documents : ${error}`);
+  //   });
+
+  //   Promise.all(getItems)
+
+  console.log(todoItems);
+
   return {
     type: ActionType.GET_TODOS,
-    payload: test
+    payload: todoItems
   };
+
+  // let todoItem: Todo = { id: 1, text: 'hello', completed: false };
+  // let test: Todo[] = [];
+  // test.push(todoItem);
+
 }
+
+const fetchTodosCompleted = (todos: Todo[]) => ({
+  type: ActionType.GET_TODOS,
+  payload: todos
+});
 
 export function addTodo(todo: Todo): Action<Todo> {
   return {

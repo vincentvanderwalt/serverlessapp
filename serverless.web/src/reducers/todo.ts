@@ -1,6 +1,14 @@
 import createReducer from './createReducer';
 import { Action, ActionType, Todo } from '../model/model';
 
+export type ListTodos = Todo[];
+
+export interface TodoState {
+    todos: ListTodos;
+    loading: boolean;
+    error: boolean;
+}
+
 export const todoList = createReducer([], {
     [ActionType.GET_TODOS](state: Array<Todo>, action: Action<Array<Todo>>) {
         state = action.payload;
