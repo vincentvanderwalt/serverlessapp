@@ -1,8 +1,13 @@
-# Create React App example with Material-UI, TypeScript, Redux and Routing
+# Create React App example with Material-UI, TypeScript, Redux and Routing that speaks to Azure Functions for Todo data living on CosmosDb
 
 <img width="100%" src="screenshot.png" alt="example"/>
 
 Inspired by:
+
+ * [innFactory Sample](https://github.com/innFactory/create-react-app-material-typescript-redux)
+
+And
+
  * [Material-UI](https://github.com/mui-org/material-ui)
  * [react-redux-typescript-boilerplate](https://github.com/rokoroku/react-redux-typescript-boilerplate)
 
@@ -23,14 +28,21 @@ Inspired by:
 Download or clone this repo
 
 ```bash
-git clone https://github.com/innFactory/create-react-app-material-typescript-redux
-cd create-react-app-material-typescript-redux
+git clone https://github.com/vinnytheviking/serverlessapp.git
+cd serverlessapp
 ```
 
 Install it and run:
 
 ```bash
 npm i
+```
+
+Startup the Todo Function
+
+not completed yet
+
+``` bash
 npm start
 ```
 
@@ -40,6 +52,4 @@ This example demonstrate how you can use [Create React App](https://github.com/f
 
 ## Contributors
 
-* [Anton Spöck](https://github.com/spoeck)
-
-Powered by [innFactory](https://innfactory.de/)
+* [Vincent van der Walt](https://github.com/vinnytheviking)

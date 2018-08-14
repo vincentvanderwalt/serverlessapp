@@ -15,9 +15,11 @@ const todoFetchSuccess = (todos: TodoList) => {
 };
 
 export const todoFetch = () => (dispatch: Dispatch<TodoAction>) => {
-  fetch('https://todowebappvw.azurewebsites.net/api/GetTodos', {
-    method: 'get'
-  })
+  let url = process.env.REACT_APP_TODO_GETALL_URL;
+  fetch(
+    url, {
+      method: 'get'
+    })
     .then(response => response.json())
     .then(json => {
       return dispatch(todoFetchSuccess(json));
@@ -26,27 +28,6 @@ export const todoFetch = () => (dispatch: Dispatch<TodoAction>) => {
       console.log(`Api Error fetching documents : ${error}`);
     });
 };
-
-export function getTodos(): ActionPayload<Todo[]> {
-  // fetch('http://localhost:7071/api/GetTodos', {
-  //   method: 'get'
-  // })
-  //   .then(response => response.json())
-  //   .then(json => console.log(json))
-  //   .catch(error => {
-  //     console.log(`Api Error fetching documents : ${error}`);
-  //   });
-
-  // console.log(testDocs);
-
-  let todoItem: Todo = { id: 1, text: 'hello', completed: false };
-  let test: Todo[] = [];
-  test.push(todoItem);
-  return {
-    type: ActionType.GET_TODOS,
-    payload: test
-  };
-}
 
 export function addTodo(todo: Todo): ActionPayload<Todo> {
   return {

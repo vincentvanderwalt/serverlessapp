@@ -27,6 +27,7 @@
     "@types/redux-logger": "^3.0.5",
     "@types/webpack-env": "^1.13.5",
     "csstype": "^2.4.2",
+    "dotenv": "^6.0.0",
     "redux-devtools-extension": "^2.13.2",
     "typescript": "2.8.3"
   },

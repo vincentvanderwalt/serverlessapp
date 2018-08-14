@@ -31,7 +31,6 @@ class TodoTable extends React.Component<TodoTable.Props> {
   }
 
   componentDidMount() {
-    console.log('component mounted');
     this.props.actions.todoFetch();
   }
 
