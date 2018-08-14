@@ -6,33 +6,23 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs.Host;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Logging;
 using Microsoft.Azure.Documents.Client;
 using System;
-using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 
-namespace GetTodosFunction
+namespace TodoActions
 {
-    public static class GetTodos
+    public static class GetAll
     {
-
-
-
-
-        //private static readonly string endpointUrl = ConfigurationManager.AppSettings["cosmosDBAccountEndpoint"];
-        //private static readonly string authorizationKey = ConfigurationManager.AppSettings["cosmosDBAccountKey"];
-        //private static readonly DocumentClient client = new DocumentClient(new Uri(endpointUrl), authorizationKey);
-
-        [FunctionName("GetTodos")]
-        public static async Task<IActionResult> RunAsync([HttpTrigger(AuthorizationLevel.Function, "get","options", Route = null)]HttpRequest req,
+        [FunctionName("GetAll")]
+        public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", Route = null)]HttpRequest req,
             [CosmosDB("ToDoList", "Items", ConnectionStringSetting = "CosmosDBConnection")] DocumentClient client,
-            TraceWriter log, ExecutionContext context)
+            ILogger log)
         {
-            
             Uri collectionUri = UriFactory.CreateDocumentCollectionUri("ToDoList", "Items");
 
             var docs = await client.ReadDocumentFeedAsync(collectionUri, new FeedOptions { MaxItemCount = 10 });
-
 
             return docs != null
                 ? (ActionResult)new OkObjectResult(docs)
