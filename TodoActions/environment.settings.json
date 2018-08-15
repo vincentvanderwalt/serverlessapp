@@ -3,7 +3,7 @@
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
-    "CosmosDBConnection": "AccountEndpoint=https://vwtodo.documents.azure.com:443/;AccountKey=KAxwJyunqhTUULve45zpRzMrOVIykyERNlkNDV6Y5MkiGJHnObXMuSU3fzQOPSFLUJ9qkyXml0R9BieEQrj2Ag==;"
+    "CosmosDBConnection": "{CosmosDB_Connection_Here}"
   },
   "Host": {
     "LocalHttpPort": 7071,
