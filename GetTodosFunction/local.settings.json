@@ -1,0 +1,12 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
+    "CosmosDBConnection": "AccountEndpoint=https://vwtodo.documents.azure.com:443/;AccountKey=KAxwJyunqhTUULve45zpRzMrOVIykyERNlkNDV6Y5MkiGJHnObXMuSU3fzQOPSFLUJ9qkyXml0R9BieEQrj2Ag==;"
+  },
+  "Host": {
+    "LocalHttpPort": 7071,
+    "CORS": "*"
+  }
+}
