@@ -11,7 +11,8 @@ export enum ActionType {
     COMPLETE_TODO,
     UNCOMPLETE_TODO,
     GET_TODOS,
-    TODO_FETCH_COMPLETE
+    TODO_FETCH_COMPLETE,
+    TODO_ADD_COMPLETE
 }
 
 export interface ActionPayload<T> {

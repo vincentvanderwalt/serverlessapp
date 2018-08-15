@@ -15,6 +15,9 @@ export const todoList = createReducer([], {
         state = action.todos;
         return state;
     },
+    [ActionType.TODO_ADD_COMPLETE](state: Array<Todo>, action: TodoAction) {
+        return [...state, action.todos];
+    },
     [ActionType.ADD_TODO](state: Array<Todo>, action: ActionPayload<Todo>) {
         return [...state, action.payload];
     },

@@ -3,7 +3,13 @@
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "AzureWebJobsDashboard": "UseDevelopmentStorage=true",
-    "CosmosDBConnection": "{CosmosDB_Connection_Here}"
+    "CosmosDBConnection": "{CosmosDB_Connection_Here}",
+    "CosmosDBAccountEndpoint": "{CosmosDB_Endpoint_Here}",
+    "CosmosDBAccountKey": "{CosmosDB_Account_Here}",
+    "CosmosDBName": "{CosmosDB_Database_Name_Here}",
+    "CosmosDBCollectionName": "{CosmosDB_Collection_Name_Here}"
+
+
   },
   "Host": {
     "LocalHttpPort": 7071,

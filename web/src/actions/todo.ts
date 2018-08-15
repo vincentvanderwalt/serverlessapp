@@ -14,6 +14,13 @@ const todoFetchSuccess = (todos: TodoList) => {
   };
 };
 
+const todoAddSuccess = (todo: Todo) => {
+  return {
+    type: ActionType.TODO_ADD_COMPLETE,
+    todos: todo
+  };
+};
+
 export const todoFetch = () => (dispatch: Dispatch<TodoAction>) => {
   let url = process.env.REACT_APP_TODO_GETALL_URL;
   fetch(
@@ -29,12 +36,22 @@ export const todoFetch = () => (dispatch: Dispatch<TodoAction>) => {
     });
 };
 
-export function addTodo(todo: Todo): ActionPayload<Todo> {
-  return {
-    type: ActionType.ADD_TODO,
-    payload: todo
-  };
-}
+export const addTodo = (todo: Todo) => (dispatch: Dispatch<TodoAction>) => {
+  let url = process.env.REACT_APP_TODO_ADD_URL;
+  fetch(
+    url, {
+      method: 'post',
+      body: JSON.stringify(todo)
+    })
+    .then(response => response.json())
+    .then(json => {
+      return dispatch(todoAddSuccess(json));
+    })
+    .catch(error => {
+      console.log(`Api Error adding document : ${error}`);
+    });
+
+};
 
 // Async Function expample with redux-thunk
 export function completeTodo(todoId: number) {
